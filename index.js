@@ -22,7 +22,7 @@ var MyObject = bookshelf.Model.extend({
   tableName: 'MyTable'
 });
 
-// create table
+// Setup
 knex.schema.hasTable('MyTable').then(function(exists) {
 
     if (!exists) {
@@ -35,7 +35,7 @@ knex.schema.hasTable('MyTable').then(function(exists) {
         return knex('MyTable').delete();
     }
 
-}).then(function() { //create 2, out of order, with TX
+}).then(function() { // Demo the problem
 
     return bookshelf.transaction(function(t) {
 
