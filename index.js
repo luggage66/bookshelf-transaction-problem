@@ -39,8 +39,6 @@ knex.schema.hasTable('MyTable').then(function(exists) {
 
     return bookshelf.transaction(function(t) {
 
-        //return new MyObject({name: 'This object should never get saved'}).save(null, {transacting: t});
-
         var promise1 = new MyObject({name: 'This object should never get saved'}).save(null, {transacting: t});
         var promise2 = Promise.reject(new Error('SomeError'))
 
